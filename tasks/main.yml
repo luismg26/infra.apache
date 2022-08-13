@@ -11,7 +11,7 @@
   lineinfile:
     path: /etc/httpd/conf/httpd.conf
     line: "Listen {{ item.user_port  }}"
-  loop: "web_developers"
+  loop: "{{ web_developers }}"
   notify:
     - reinicia apache
 
