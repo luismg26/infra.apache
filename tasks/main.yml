@@ -8,13 +8,16 @@
     state: latest
 
 - name: Archivo de configuración para Apache
-  template:
-
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    line: "Listen {{ item.user_port  }}"
+  loop: "web_developers"
   notify:
     - reinicia apache
 
 - name: Archivo de configuración del firewall
   template:
-
+    src: firewalld.j2
+    dest: /etc/firewalld/zones/public.xml
   notify:
     - reinicia firewall
