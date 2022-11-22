@@ -1,11 +1,6 @@
 ---
 # handlers file for infra.apache
-- name: reinicia apache
-  service:
-    name: httpd
-    state: restarted
-
 - name: reinicia firewall
   service:
-    name: firewalld
+    name: "{{ fw_svc }}"
     state: restarted

@@ -1,2 +1,10 @@
 ---
 # defaults file for infra.apache
+web_svc: httpd
+fw_svc: firewalld
+web_pkg: httpd
+fw_pkg: firewalld
+web_developers:
+  - username: user1
+    name: user1_name
+    user_port: 8081

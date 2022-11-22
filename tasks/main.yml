@@ -3,17 +3,9 @@
 - name: Instala apache y firewalld
   yum:
     name:
-      - httpd
-      - firewalld
+      - "{{ web_pkg }}"
+      - "{{ fw_pkg }}"
     state: latest
-
-- name: Archivo de configuración para Apache
-  lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    line: "Listen {{ item.user_port  }}"
-  loop: "{{ web_developers }}"
-  notify:
-    - reinicia apache
 
 - name: Archivo de configuración del firewall
   template:
